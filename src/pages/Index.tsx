@@ -8,6 +8,7 @@ import { Skills } from "@/components/sections/Skills";
 import { Achievements } from "@/components/sections/Achievements";
 import { Contact } from "@/components/sections/Contact";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { ScrollToTop } from "@/components/ui/ScrollToTop";
 import { useEffect } from "react";
 
 const Index = () => {
@@ -18,6 +19,9 @@ const Index = () => {
     meta.content = "#000000";
     document.head.appendChild(meta);
 
+    // Set page title
+    document.title = "Vishal Chaure | Portfolio";
+
     return () => {
       document.head.removeChild(meta);
     };
@@ -26,6 +30,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <ScrollProgress />
+      <ScrollToTop />
       <Navbar />
       <Hero />
       <About />

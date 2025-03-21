@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { AnimatedText } from "../ui/AnimatedText";
 import { SocialLinks } from "../ui/SocialLinks";
+import { ResumeButton } from "../ui/ResumeButton";
 
 export const Hero: React.FC = () => {
   const { ref, isInView } = useScrollAnimation();
@@ -81,6 +82,7 @@ export const Hero: React.FC = () => {
           >
             Contact Me
           </motion.a>
+          <ResumeButton />
         </motion.div>
 
         <motion.div
