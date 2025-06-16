@@ -1,191 +1,89 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { SocialLinks } from "../ui/SocialLinks";
-import { Phone, Mail, MapPin } from "lucide-react";
-import { Loader } from "../ui/Loader";
-import { toast } from "sonner";
+import { Mail, Download } from "lucide-react";
 
 export const Contact: React.FC = () => {
   const { ref, isInView } = useScrollAnimation();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { id, value } = e.target;
-    setFormData((prev) => ({ ...prev, [id]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      toast.success("Message sent successfully!");
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    } catch (error) {
-      toast.error("Failed to send message. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   return (
     <section
       id="contact"
-      className="min-h-screen flex items-center justify-center section-padding"
+      className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 sm:py-24"
     >
-      <div ref={ref} className="section-container">
+      <div ref={ref} className="max-w-4xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
+          className="mb-12 sm:mb-16 text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 inline-block text-gradient">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 inline-block text-gradient">
             Get In Touch
           </h2>
-          <div className="w-20 h-1 bg-white/20 mx-auto rounded-full"></div>
+          <div className="w-16 sm:w-20 h-1 bg-white/20 mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="glass-morphism p-8 rounded-2xl"
-          >
-            <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
-            
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-white/10">
-                  <Phone size={20} className="text-gradient" />
-                </div>
-                <div>
-                  <h4 className="text-lg font-medium">Phone</h4>
-                  <p className="text-white/70">(+91) 9326039327</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-white/10">
-                  <Mail size={20} className="text-gradient" />
-                </div>
-                <div>
-                  <h4 className="text-lg font-medium">Email</h4>
-                  <p className="text-white/70">palchaure@gmail.com</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-white/10">
-                  <MapPin size={20} className="text-gradient" />
-                </div>
-                <div>
-                  <h4 className="text-lg font-medium">Location</h4>
-                  <p className="text-white/70">Andheri west, Mumbai</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="mt-10">
-              <h4 className="text-lg font-medium mb-4">Connect with me</h4>
-              <SocialLinks />
-            </div>
-          </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-center mb-12"
+        >
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 sm:p-12">
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-lg sm:text-xl text-white/80 leading-relaxed mb-8 max-w-3xl mx-auto"
+            >
+              Want to collaborate, ask something or chat? Be sure to contact me through any of my social media. 
+              You can also drop me an email and I will try to reply as soon as possible. I am also open to 
+              freelance projects, so do not hesitate to hit me up if you wish to work together on new and 
+              exciting projects.
+            </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="glass-morphism p-8 rounded-2xl"
-          >
-            <h3 className="text-2xl font-semibold mb-6">Send me a message</h3>
-            
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full p-3 rounded-lg bg-white/5 border border-white/10 focus:border-white/30 focus:outline-none transition-colors"
-                  placeholder="Your name"
-                  required
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full p-3 rounded-lg bg-white/5 border border-white/10 focus:border-white/30 focus:outline-none transition-colors"
-                  placeholder="Your email"
-                  required
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium mb-2">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  className="w-full p-3 rounded-lg bg-white/5 border border-white/10 focus:border-white/30 focus:outline-none transition-colors"
-                  placeholder="Subject"
-                  required
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  rows={5}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full p-3 rounded-lg bg-white/5 border border-white/10 focus:border-white/30 focus:outline-none transition-colors resize-none"
-                  placeholder="Your message"
-                  required
-                ></textarea>
-              </div>
-              
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full py-3 rounded-lg bg-white text-black font-medium mt-2 flex justify-center items-center"
-                type="submit"
-                disabled={isSubmitting}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-8"
+            >
+              <motion.a
+                href="mailto:palchaure@gmail.com"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-lg bg-white text-black font-medium text-base hover:bg-white/90 transition-colors w-full sm:w-auto justify-center"
               >
-                {isSubmitting ? <Loader size="sm" color="black" /> : "Send Message"}
-              </motion.button>
-            </form>
-          </motion.div>
-        </div>
+                <Mail size={20} />
+                <span>Drop a Mail</span>
+              </motion.a>
+              
+              <motion.a
+                href="/Vishal_Chaure_Resume.txt"
+                download="Vishal_Chaure_Resume.txt"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-lg border border-white/20 hover:bg-white/10 transition-colors text-base w-full sm:w-auto justify-center"
+              >
+                <Download size={20} />
+                <span>Download Resume</span>
+              </motion.a>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="border-t border-white/10 pt-8"
+            >
+              <p className="text-white/60 text-sm mb-4">Connect with me on social media</p>
+              <SocialLinks className="justify-center" />
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

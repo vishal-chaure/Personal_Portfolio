@@ -9,69 +9,76 @@ export const About: React.FC = () => {
   return (
     <section
       id="about"
-      className="min-h-screen flex items-center justify-center section-padding"
+      className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 sm:py-24"
     >
-      <div ref={ref} className="section-container">
+      <div ref={ref} className="max-w-6xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
+          className="mb-12 sm:mb-16 text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 inline-block text-gradient">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 inline-block text-gradient">
             About Me
           </h2>
-          <div className="w-20 h-1 bg-white/20 mx-auto rounded-full"></div>
+          <div className="w-16 sm:w-20 h-1 bg-white/20 mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="glass-morphism p-6 rounded-2xl"
+            className="flex justify-center lg:justify-start"
           >
-            <h3 className="text-2xl font-semibold mb-4">Who I Am</h3>
-            <p className="text-white/70 mb-4">
-              I am a motivated and detail-oriented Computer Science student with a 
-              solid foundation in software development and a keen interest in 
-              cutting-edge technologies.
-            </p>
-            <p className="text-white/70 mb-4">
-              My passion lies in building efficient, scalable applications and solving 
-              complex problems using data structures and algorithms.
-            </p>
-            <p className="text-white/70">
-              I am currently pursuing my Bachelor of Technology in Computer Engineering 
-              at Sardar Patel Institute of Technology, Mumbai, where I am honing my 
-              technical skills and exploring new technologies.
-            </p>
+            <div className="w-64 h-64 sm:w-72 sm:h-72 rounded-2xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-white/10 flex items-center justify-center">
+              <div className="w-56 h-56 sm:w-64 sm:h-64 rounded-xl bg-white/5 flex items-center justify-center">
+                <span className="text-4xl sm:text-5xl">👨‍💻</span>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col space-y-6"
+            className="space-y-6"
           >
-            <div className="glass-morphism p-6 rounded-2xl">
-              <h3 className="text-2xl font-semibold mb-4">My Objective</h3>
-              <p className="text-white/70">
-                Seeking a challenging opportunity to apply my technical expertise and 
-                academic knowledge, contribute to impactful projects, and enhance my 
-                professional growth in the field of software development.
+            <div>
+              <h3 className="text-xl sm:text-2xl font-semibold mb-4 text-gradient">Who I Am</h3>
+              <p className="text-white/70 mb-4 leading-relaxed">
+                I am a motivated and detail-oriented Computer Science student with a 
+                solid foundation in software development and a keen interest in 
+                cutting-edge technologies.
+              </p>
+              <p className="text-white/70 mb-4 leading-relaxed">
+                My passion lies in building efficient, scalable applications and solving 
+                complex problems using data structures and algorithms.
+              </p>
+              <p className="text-white/70 leading-relaxed">
+                Currently pursuing my Bachelor of Technology in Computer Engineering 
+                at Sardar Patel Institute of Technology, Mumbai, where I am honing my 
+                technical skills and exploring new technologies.
               </p>
             </div>
 
-            <div className="glass-morphism p-6 rounded-2xl">
-              <h3 className="text-2xl font-semibold mb-4">My Focus</h3>
-              <ul className="list-disc list-inside text-white/70 space-y-2">
-                <li>Full Stack Web Development</li>
-                <li>Data Structures and Algorithms</li>
-                <li>Problem Solving</li>
-                <li>Mobile App Development</li>
-                <li>Database Management</li>
-              </ul>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+              <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-4">
+                <h4 className="font-semibold mb-2 text-white/90">Location</h4>
+                <p className="text-white/60 text-sm">Mumbai, India</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-4">
+                <h4 className="font-semibold mb-2 text-white/90">Education</h4>
+                <p className="text-white/60 text-sm">SPIT, 3rd Year</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-4">
+                <h4 className="font-semibold mb-2 text-white/90">Focus</h4>
+                <p className="text-white/60 text-sm">Full Stack & DSA</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-4">
+                <h4 className="font-semibold mb-2 text-white/90">Status</h4>
+                <p className="text-white/60 text-sm">Open to work</p>
+              </div>
             </div>
           </motion.div>
         </div>

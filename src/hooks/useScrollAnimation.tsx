@@ -1,10 +1,10 @@
 
-import { useInView, InViewOptions } from "framer-motion";
+import { useInView, UseInViewOptions } from "framer-motion";
 import { useRef } from "react";
 
-interface ScrollAnimationOptions extends Omit<InViewOptions, 'root'> {
+interface ScrollAnimationOptions extends Omit<UseInViewOptions, 'root'> {
   once?: boolean;
-  margin?: InViewOptions['margin'];
+  margin?: UseInViewOptions['margin'];
 }
 
 export const useScrollAnimation = (options: ScrollAnimationOptions = {}) => {
