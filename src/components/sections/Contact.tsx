@@ -39,10 +39,7 @@ export const Contact: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-xs sm:text-sm lg:text-base text-white/80 leading-relaxed mb-4 sm:mb-6 lg:mb-8 max-w-2xl mx-auto px-1"
             >
-              Want to collaborate, ask something or chat? Be sure to contact me through any of my social media. 
-              You can also drop me an email and I will try to reply as soon as possible. I am also open to 
-              freelance projects, so do not hesitate to hit me up if you wish to work together on new and 
-              exciting projects.
+              Have a question, want to collaborate, or just say hi? Reach out via social media or drop me an email — I’ll get back to you as soon as I can. I’m also open to freelance opportunities and exciting new projects!
             </motion.p>
 
             <motion.div
@@ -52,7 +49,7 @@ export const Contact: React.FC = () => {
               className="flex flex-col sm:flex-row gap-2 sm:gap-3 lg:gap-4 justify-center items-center mb-4 sm:mb-6 lg:mb-8 max-w-lg mx-auto"
             >
               <motion.a
-                href="mailto:palchaure@gmail.com"
+                href="mailto:vishal.chaure22@spit.ac.in"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center gap-2 px-3 sm:px-4 lg:px-5 py-2 sm:py-2.5 rounded-lg bg-white text-black font-medium text-xs sm:text-sm hover:bg-white/90 transition-colors w-full sm:w-auto justify-center flex-1"

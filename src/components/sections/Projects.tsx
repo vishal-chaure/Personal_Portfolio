@@ -1,41 +1,98 @@
-
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ProjectModal } from "../ui/ProjectModal";
+import { Github, ExternalLink } from "lucide-react";
 
-const projectsData = [
+interface Project {
+  title: string;
+  description: string;
+  summary: string;
+  technologies: string[];
+  details: string[];
+  timeline: string;
+  links: {
+    github: string;
+    live: string;
+  };
+  image?: string;
+}
+
+const projectsData: Project[] = [
   {
-    title: "Yummie - Food Delivery Website",
-    description: "A full-stack food delivery platform with secure payments and real-time order tracking.",
-    summary: "Full-stack food delivery website with payment integration and admin panel.",
-    technologies: ["MERN Stack", "Stripe"],
+    title: "RetinaAI - Diabetic Retinopathy Detection",
+    description: "An ML-powered web application for detecting and classifying Diabetic Retinopathy stages from retinal images.",
+    summary: "AI-powered web application for diabetic retinopathy detection using deep learning.",
+    technologies: ["React", "Supabase", "Python", "Flask", "Keras", "Numpy", "TensorFlow", "Scikit-learn", "matplotlib"],
     details: [
-      "Implemented Stripe for secure payment processing and authentication.",
-      "Designed an admin panel for restaurant owners to manage orders and track order details in real-time.",
-      "Integrated backend with MongoDB for efficient order management and data storage.",
+      "Deep learning model using ResNet-50 for retinopathy detection",
+      "Real-time image analysis and classification",
+      "User-friendly severity level display with precautionary guidance",
+      "Secure user authentication and prediction history storage"
     ],
-    timeline: "August 2024 - Present",
+    timeline: "March 2024",
     links: {
-      github: "https://github.com/vishalchaure/yummie-food-delivery",
-      live: "#",
+      github: "https://github.com/vishal-chaure/RetinaAI_V2",
+      live: "https://retinaai.vercel.app/"
     },
+    image: "/projects/diabetic-retinopathy.png"
   },
   {
-    title: "Calculator App with Currency Converter",
-    description: "Multi-functional calculator app with measurement conversions and real-time currency exchange.",
-    summary: "React Native calculator with currency converter and measurement tools.",
-    technologies: ["React Native"],
+    title: "SAMARTH - Smart Policing Platform",
+    description: "A comprehensive smart policing platform for Mumbai featuring crime intensity prediction, FIR case prioritization, and secure evidence storage.",
+    summary: "Smart policing platform with ML-powered crime prediction and secure evidence storage.",
+    technologies: ["React", "Supabase", "Flask", "Streamlit", "IPFS", "scikit-learn"],
     details: [
-      "Built a multi-functional calculator app with features for general calculations, as well as measurement conversions for length, weight, and temperature.",
-      "Integrated a currency converter with real-time currency data, offering accurate exchange rates for global currencies.",
+      "Crime intensity prediction across 24 wards using ML models with interactive heatmap",
+      "FIR case prioritization using Random Forest and Gradient Boosting",
+      "Tamper-proof evidence storage with IPFS and unique CIDs",
+      "Media anomaly detection for suspect uploads",
+      "Secure citizen reporting portal with role-based access"
     ],
-    timeline: "July 2024",
+    timeline: "Ongoing",
     links: {
-      github: "https://github.com/vishalchaure/calculator-app",
-      live: "#",
+      github: "https://github.com/aayushman1403/SAMARTH",
+      live: "none"
     },
+    image: "/projects/samarth.png"
   },
+  {
+    title: "Yummie - Food Delivery Platform",
+    description: "A full-stack food delivery platform with real-time order tracking and secure payment processing.",
+    summary: "Full-stack food delivery platform with payment integration and admin panel.",
+    technologies: ["MERN Stack", "Stripe", "MongoDB"],
+    details: [
+      "Responsive food delivery platform with menu browsing and order tracking",
+      "Secure payment processing with Stripe integration",
+      "Dynamic admin dashboard for order management",
+      "Efficient data storage with MongoDB"
+    ],
+    timeline: "August 2024",
+    links: {
+      github: "https://github.com/vishal-chaure/FoodDel",
+      live: "none"
+    },
+    image: "/projects/yummie.png"
+  },
+  // {
+  //   title: "Calculator App with Currency Converter",
+  //   description: "A multi-functional calculator app with real-time currency conversion capabilities.",
+  //   summary: "React Native calculator with currency converter and measurement tools.",
+  //   technologies: ["React Native", "ExchangeRate API"],
+  //   details: [
+  //     "Basic arithmetic operations",
+  //     "Unit conversions for length, weight, and temperature",
+  //     "Real-time currency conversion using ExchangeRate API",
+  //     "Cross-platform mobile application"
+  //   ],
+  //   timeline: "July 2024",
+  //   links: {
+  //     github: "https://github.com/yourusername/calculator-app",
+  //     live: "https://calculator-demo.com"
+  //   },
+  //   image: "/projects/calculator.png"
+  // },
+  
 ];
 
 export const Projects: React.FC = () => {
@@ -71,63 +128,76 @@ export const Projects: React.FC = () => {
           <div className="w-16 sm:w-20 lg:w-24 h-1 bg-white/20 mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
           {projectsData.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              whileHover={{ 
-                y: -8,
-                transition: { duration: 0.3 }
-              }}
-              className="group relative cursor-pointer"
+              className="bg-zinc-900 backdrop-blur-sm rounded-xl p-6 sm:p-8 hover:bg-zinc-800 transition-colors cursor-pointer"
               onClick={() => handleProjectClick(project)}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-2xl hover:shadow-purple-500/10 transition-all duration-500 hover:border-white/20 h-full">
-                <div className="overflow-hidden rounded-xl mb-6 sm:mb-8 bg-gradient-to-br from-purple-500/20 to-blue-500/20">
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.3 }}
-                    className="h-32 sm:h-36 lg:h-40 flex items-center justify-center relative overflow-hidden"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-600/30 to-blue-600/30" />
-                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-center px-4 relative z-10">
-                      {project.title}
-                    </h3>
-                  </motion.div>
-                </div>
-
-                <div className="mb-6 sm:mb-8">
-                  <p className="text-white/70 text-base sm:text-lg leading-relaxed">
-                    {project.summary}
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-2 sm:gap-3 mb-4 sm:mb-6">
-                  {project.technologies.map((tech, idx) => (
-                    <span
-                      key={idx}
-                      className="px-3 py-1.5 text-sm sm:text-base rounded-full bg-white/10 text-white/70 border border-white/5"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <p className="text-sm sm:text-base text-white/50 mb-4 sm:mb-6">
-                  {project.timeline}
-                </p>
-
-                <div className="flex justify-center">
-                  <span className="text-white/60 hover:text-white transition-colors text-sm sm:text-base font-medium">
-                    Click to view details →
-                  </span>
-                </div>
+              <div className="relative w-full h-48 mb-6 rounded-lg overflow-hidden">
+                <img
+                  src={project.image || "/projects/default-project.png"}
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
               </div>
+
+              <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3 sm:mb-4">
+                {project.title}
+              </h3>
+
+              <div className="mb-6 sm:mb-8">
+                <p className="text-white/70 text-base sm:text-lg leading-relaxed">
+                  {project.description}
+                </p>
+              </div>
+
+              <div className="flex gap-3 mb-8">
+                <motion.a
+                  href={project.links.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors text-sm"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Github size={18} />
+                  <span>Github</span>
+                </motion.a>
+                {project.links.live !== 'none' && (
+                  <motion.a
+                    href={project.links.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white text-black hover:bg-white/90 transition-colors text-sm font-medium"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <ExternalLink size={18} />
+                    <span>Live</span>
+                  </motion.a>
+                )}
+              </div>
+
+              <div className="flex flex-wrap gap-2 sm:gap-3 mb-4 sm:mb-6">
+                {project.technologies.map((tech, idx) => (
+                  <span
+                    key={idx}
+                    className="px-3 py-1.5 text-sm sm:text-base rounded-full bg-white/10 text-white/70 border border-white/5"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              
             </motion.div>
           ))}
         </div>

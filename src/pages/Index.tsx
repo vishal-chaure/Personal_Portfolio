@@ -37,7 +37,7 @@ const Index = () => {
       <Education />
       <Projects />
       <Skills />
-      <Achievements />
+      {/* <Achievements /> */}
       <Contact />
       <footer className="py-8 text-center text-white/50 text-sm">
         <div className="container mx-auto">

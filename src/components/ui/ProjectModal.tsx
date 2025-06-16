@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Github, ExternalLink } from "lucide-react";
@@ -61,19 +60,23 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
             </div>
 
             <div className="mb-6">
+              <p className="text-sm text-white/50">{project.timeline}</p>
+            </div>
+
+            <div className="space-y-4">
               <h3 className="text-lg font-semibold mb-3">Key Features</h3>
-              <ul className="space-y-2">
+              <ul className="space-y-4">
                 {project.details.map((detail, idx) => (
-                  <li key={idx} className="text-white/60 text-sm flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-white/40 mt-2 flex-shrink-0" />
-                    {detail}
+                  <li key={idx} className="flex items-start gap-2">
+                    <span className="text-white mt-1">•</span>
+                    <span className="text-white/70">{detail}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             <div className="mb-6">
-              <h3 className="text-lg font-semibold mb-3">Technologies Used</h3>
+              <h3 className="text-lg font-semibold mt-5 mb-3">Technologies Used</h3>
               <div className="flex flex-wrap gap-2">
                 {project.technologies.map((tech, idx) => (
                   <span
@@ -84,35 +87,6 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                   </span>
                 ))}
               </div>
-            </div>
-
-            <div className="mb-6">
-              <p className="text-sm text-white/50">{project.timeline}</p>
-            </div>
-
-            <div className="flex gap-4">
-              <motion.a
-                href={project.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors text-sm"
-              >
-                <Github size={18} />
-                <span>View Code</span>
-              </motion.a>
-              <motion.a
-                href={project.links.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white text-black hover:bg-white/90 transition-colors text-sm font-medium"
-              >
-                <ExternalLink size={18} />
-                <span>Live Demo</span>
-              </motion.a>
             </div>
           </motion.div>
         </motion.div>

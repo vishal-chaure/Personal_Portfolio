@@ -13,27 +13,27 @@ interface SocialLink {
 const socialLinks: SocialLink[] = [
   {
     icon: Mail,
-    href: "mailto:palchaure@gmail.com",
+    href: "mailto:vishal.chaure22@spit.ac.in",
     label: "Email",
   },
   {
     icon: Linkedin,
-    href: "https://linkedin.com/in/vishal-chaure",
+    href: "https://www.linkedin.com/in/vishal-chaure-28aa49290/",
     label: "LinkedIn",
   },
   {
     icon: Github,
-    href: "https://github.com/vishalchaure",
+    href: "https://github.com/vishal-chaure",
     label: "GitHub",
   },
   {
     icon: Instagram,
-    href: "https://instagram.com/vishalchaure",
+    href: "https://instagram.com/vishal_chaure_",
     label: "Instagram",
   },
   {
     icon: Code2,
-    href: "https://leetcode.com/vishalchaure",
+    href: "https://leetcode.com/u/vishal_chaure_",
     label: "LeetCode",
   },
 ];
