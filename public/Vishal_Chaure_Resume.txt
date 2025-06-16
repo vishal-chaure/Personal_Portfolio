@@ -1,0 +1,36 @@
+
+VISHAL CHAURE
+(+91) 9326039327 | palchaure@gmail.com | Leetcode | Linkedin | Github
+
+OBJECTIVE
+Motivated and detail-oriented Computer Science student with a solid foundation in software development and a keen interest in cutting-edge technologies. Seeking a challenging opportunity to apply my technical expertise and academic knowledge, contribute to impactful projects, and enhance my professional growth.
+
+EDUCATION
+Sardar Patel Institute Of Technology                                  Andheri west, Mumbai
+Bachelor in Technology in Computer Engineering                         Nov 2022 – June 2026
+
+B K Birla College of Science, Commerce and Arts                        Kalyan west, Thane
+12th Science HSC                                                       June 2020 – May 2022
+
+PROJECTS
+Calculator App with Currency Converter | React Native                  July 2024
+• Built a multi-functional calculator app with features for general calculations, as well as measurement conversions for length, weight, and temperature.
+• Integrated a currency converter with real-time currency data, offering accurate exchange rates for global currencies.
+
+Yummie - Food Delivery Website | MERN Stack, Stripe                   August 2024 – Present
+• Developed a full-stack food delivery website allowing users to browse the menu, place orders, and track their deliveries.
+• Implemented Stripe for secure payment processing and authentication.
+• Designed an admin panel for the restaurant owner to manage orders and track order details in real-time.
+• Integrated backend with MongoDB for efficient order management and data storage.
+
+TECHNICAL SKILLS
+Languages: C, Java, Python, SQL, JavaScript, HTML/CSS
+Frameworks: React, React Native, Node.js, Express.js, Bootstrap
+Databases: MongoDB, MySQL
+Developer Tools: Git, GitHub, Adobe, Figma, VS Code, IntelliJ
+
+ACHIEVEMENTS
+LeetCode Profile:
+• Solved over 300+ problems across various difficulty levels.
+• Maintained a daily streak of 150+ days on the LeetCode platform.
+• Focus areas include algorithms, data structures, and system design.
