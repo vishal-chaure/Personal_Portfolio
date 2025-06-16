@@ -59,8 +59,8 @@ export const Contact: React.FC = () => {
               </motion.a>
               
               <motion.a
-                href="/Vishal_Chaure_Resume.txt"
-                download="Vishal_Chaure_Resume.txt"
+                href="/Vishals_Resume.pdf"
+                download="Vishals_Resume.pdf"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center gap-2 px-3 sm:px-4 lg:px-5 py-2 sm:py-2.5 rounded-lg border border-white/20 hover:bg-white/10 transition-colors text-xs sm:text-sm w-full sm:w-auto justify-center flex-1"
