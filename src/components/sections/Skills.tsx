@@ -6,21 +6,47 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 const skillCategories = [
   {
     title: "Languages",
-    skills: ["C", "Java", "Python", "SQL", "JavaScript", "HTML/CSS"],
+    skills: [
+      { name: "C", color: "text-blue-400" },
+      { name: "Java", color: "text-orange-500" },
+      { name: "Python", color: "text-yellow-400" },
+      { name: "SQL", color: "text-blue-500" },
+      { name: "JavaScript", color: "text-yellow-300" },
+      { name: "HTML/CSS", color: "text-orange-400" },
+    ],
   },
   {
-    title: "Frameworks",
-    skills: ["React", "React Native", "Node.js", "Express.js", "Bootstrap"],
+    title: "Frameworks & Libraries",
+    skills: [
+      { name: "React", color: "text-cyan-400" },
+      { name: "React Native", color: "text-cyan-300" },
+      { name: "Node.js", color: "text-green-400" },
+      { name: "Express.js", color: "text-gray-300" },
+      { name: "Bootstrap", color: "text-purple-400" },
+      { name: "Tailwind CSS", color: "text-teal-400" },
+    ],
   },
   {
-    title: "Databases",
-    skills: ["MongoDB", "MySQL"],
-  },
-  {
-    title: "Developer Tools",
-    skills: ["Git", "GitHub", "Adobe", "Figma", "VS Code", "IntelliJ"],
+    title: "Databases & Tools",
+    skills: [
+      { name: "MongoDB", color: "text-green-500" },
+      { name: "MySQL", color: "text-blue-600" },
+      { name: "Git", color: "text-orange-500" },
+      { name: "GitHub", color: "text-gray-300" },
+      { name: "VS Code", color: "text-blue-400" },
+      { name: "Figma", color: "text-pink-400" },
+    ],
   },
 ];
+
+const floatingAnimation = {
+  y: [0, -10, 0],
+  transition: {
+    duration: 3,
+    repeat: Infinity,
+    ease: "easeInOut"
+  }
+};
 
 export const Skills: React.FC = () => {
   const { ref, isInView } = useScrollAnimation();
@@ -28,42 +54,69 @@ export const Skills: React.FC = () => {
   return (
     <section
       id="skills"
-      className="min-h-screen flex items-center justify-center section-padding"
+      className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 sm:py-24"
     >
-      <div ref={ref} className="section-container">
+      <div ref={ref} className="max-w-7xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
+          className="mb-12 sm:mb-16 text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 inline-block text-gradient">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 inline-block text-gradient">
             Technical Skills
           </h2>
-          <div className="w-20 h-1 bg-white/20 mx-auto rounded-full"></div>
+          <div className="w-16 sm:w-20 h-1 bg-white/20 mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {skillCategories.map((category, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="glass-morphism p-6 rounded-2xl"
+              className="glass-morphism p-6 sm:p-8 rounded-2xl group hover:bg-white/10 transition-all duration-500"
             >
-              <h3 className="text-2xl font-semibold mb-6 text-gradient">
+              <motion.h3 
+                className="text-xl sm:text-2xl font-semibold mb-6 text-gradient"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.2 }}
+              >
                 {category.title}
-              </h3>
-              <div className="flex flex-wrap gap-3">
+              </motion.h3>
+              <div className="grid grid-cols-2 gap-4">
                 {category.skills.map((skill, idx) => (
                   <motion.div
                     key={idx}
-                    whileHover={{ y: -5 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                    className="px-4 py-2 bg-white/10 rounded-full text-white/80 hover:text-white hover:bg-white/20 transition-colors"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                    transition={{ 
+                      duration: 0.5, 
+                      delay: (index * 0.2) + (idx * 0.1),
+                      type: "spring",
+                      stiffness: 100
+                    }}
+                    whileHover={{ 
+                      scale: 1.1,
+                      rotate: [0, -5, 5, 0],
+                      transition: { duration: 0.3 }
+                    }}
+                    animate={{
+                      ...floatingAnimation,
+                      transition: {
+                        ...floatingAnimation.transition,
+                        delay: idx * 0.5
+                      }
+                    }}
+                    className="flex flex-col items-center p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-all duration-300 cursor-pointer group/skill border border-white/5 hover:border-white/20"
                   >
-                    {skill}
+                    <div className={`w-8 h-8 rounded-full bg-gradient-to-br from-white/20 to-white/5 flex items-center justify-center mb-2 ${skill.color} group-hover/skill:scale-110 transition-transform duration-300`}>
+                      <div className="w-4 h-4 rounded-full bg-current opacity-80"></div>
+                    </div>
+                    <span className="text-sm font-medium text-white/80 group-hover/skill:text-white transition-colors text-center">
+                      {skill.name}
+                    </span>
                   </motion.div>
                 ))}
               </div>
@@ -75,56 +128,41 @@ export const Skills: React.FC = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-12 glass-morphism p-6 rounded-2xl"
+          className="mt-12 sm:mt-16 glass-morphism p-6 sm:p-8 rounded-2xl"
         >
-          <h3 className="text-2xl font-semibold mb-6 text-gradient text-center">
-            Technical Proficiency
+          <h3 className="text-xl sm:text-2xl font-semibold mb-8 text-gradient text-center">
+            Core Competencies
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <h4 className="text-lg font-medium mb-4">Web Development</h4>
-              <div className="space-y-4">
-                <SkillBar label="Frontend Development" percentage={85} />
-                <SkillBar label="Backend Development" percentage={80} />
-                <SkillBar label="Responsive Design" percentage={90} />
-              </div>
-            </div>
-            <div>
-              <h4 className="text-lg font-medium mb-4">Programming</h4>
-              <div className="space-y-4">
-                <SkillBar label="Data Structures" percentage={90} />
-                <SkillBar label="Algorithms" percentage={85} />
-                <SkillBar label="Problem Solving" percentage={88} />
-              </div>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { label: "Frontend Development", icon: "🎨" },
+              { label: "Backend Development", icon: "⚙️" },
+              { label: "Data Structures & Algorithms", icon: "🧮" },
+              { label: "Problem Solving", icon: "🧩" }
+            ].map((competency, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.5, delay: 0.8 + (idx * 0.1) }}
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="text-center p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-all duration-300 border border-white/5 hover:border-white/20"
+              >
+                <motion.div 
+                  className="text-3xl mb-3"
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: idx * 0.5 }}
+                >
+                  {competency.icon}
+                </motion.div>
+                <p className="font-medium text-white/80 text-sm">
+                  {competency.label}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>
     </section>
-  );
-};
-
-interface SkillBarProps {
-  label: string;
-  percentage: number;
-}
-
-const SkillBar: React.FC<SkillBarProps> = ({ label, percentage }) => {
-  return (
-    <div>
-      <div className="flex justify-between mb-1">
-        <span>{label}</span>
-        <span>{percentage}%</span>
-      </div>
-      <div className="w-full bg-white/10 rounded-full h-2.5">
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: `${percentage}%` }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="h-2.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
-          viewport={{ once: true }}
-        />
-      </div>
-    </div>
   );
 };

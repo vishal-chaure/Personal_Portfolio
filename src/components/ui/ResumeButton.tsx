@@ -10,9 +10,9 @@ export const ResumeButton: React.FC = () => {
       download="Vishal_Chaure_Resume.txt"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className="flex items-center gap-2 px-6 py-2.5 rounded-lg border border-white/20 hover:bg-white/10 transition-colors"
+      className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg border border-white/20 hover:bg-white/10 transition-colors text-sm sm:text-base"
     >
-      <Download size={18} />
+      <Download size={16} className="sm:w-[18px] sm:h-[18px]" />
       <span>Resume</span>
     </motion.a>
   );
