@@ -33,7 +33,7 @@ export const About: React.FC = () => {
             <div className="w-56 h-56 sm:w-48 sm:h-48 lg:w-96 lg:h-96 rounded-2xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-white/10 flex items-center justify-center overflow-hidden">
             <div className="w-56 h-56 sm:w-44 sm:h-44 lg:w-96 lg:h-96 rounded-xl bg-white/5 flex items-center justify-center overflow-hidden">
               <img
-                src="https://raw.githubusercontent.com/vishal-chaure/Github-Assets/main/My%20Portfolio%20Assets/mypic.jpg"
+                src="/mypic.jpg"
                 alt="Vishal Chaure"
                 className="w-full h-full object-cover"
               />
