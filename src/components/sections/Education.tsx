@@ -16,7 +16,7 @@ const educationData = [
     duration: "June 2020 - May 2022",
   },
   {
-    institution: "Nutan Dnyan Mandir And Junior College",
+    institution: "Nutan Dnyan Mandir School And Junior College",
     degree: "10th SSC Maharashtra Board",
     location: "Kalyan east, Thane",
     duration: "June 2011 - June 2020",
