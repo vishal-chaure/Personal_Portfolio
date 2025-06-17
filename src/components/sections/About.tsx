@@ -72,7 +72,7 @@ export const About: React.FC = () => {
               </div>
               <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-4 lg:p-6">
                 <h4 className="font-semibold mb-1 text-white/90 text-xs sm:text-sm">Education</h4>
-                <p className="text-white/60 text-xs">SPIT, 3rd Year</p>
+                <p className="text-white/60 text-xs">SPIT, Final Year</p>
               </div>
               {/* <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-2 sm:p-3">
                 <h4 className="font-semibold mb-1 text-white/90 text-xs sm:text-sm">Focus</h4>
