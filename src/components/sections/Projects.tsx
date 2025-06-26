@@ -38,6 +38,25 @@ const projectsData: Project[] = [
     image: "/projects/diabetic-retinopathy.png"
   },
   {
+    title: "AlgoSync - DSA Question Manager",
+    description: "A full-stack platform to manage and solve DSA problems with AI-powered assistance, smart parsing, and progress tracking.",
+    summary: "AI-driven DSA manager with smart parsing, code generation, and progress tracking.",
+    technologies: ["React", "Node.js", "MongoDB", "TailwindCSS", "Express.js", "Google Gemini AI", "shadcn/ui", "Vite"],
+    details: [
+      "Built a full-stack platform for DSA question management with AI-assisted code generation and note-taking",
+      "Implemented smart question parsing to auto-extract title, difficulty, examples, and tags from raw content",
+      "Integrated Google Gemini AI to assist users with context-aware code generation and chatbot interaction",
+      "Sleek UI with TailwindCSS, shadcn/ui components, dark mode, and glassmorphism design",
+      "Backend with Express.js and MongoDB, supporting JWT auth, code saving, and user profile syncing",
+    ],
+    timeline: "June 2024",
+    links: {
+      github: "https://github.com/vishal-chaure/AlgoSync_Frontend",
+      live: "https://algosyncv1.vercel.app"
+    },
+    image: "/projects/algosync.png"
+  },
+  {
     title: "SAMARTH - Smart Policing Platform",
     description: "A comprehensive smart policing platform for Mumbai featuring crime intensity prediction, FIR case prioritization, and secure evidence storage.",
     summary: "Smart policing platform with ML-powered crime prediction and secure evidence storage.",
