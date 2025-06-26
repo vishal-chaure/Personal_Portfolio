@@ -5,6 +5,7 @@ import { AnimatedText } from "../ui/AnimatedText";
 import { ResumeButton } from "../ui/ResumeButton";
 import { SocialLinks } from "../ui/SocialLinks";
 import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
+import Particles from "../ui/Particles";
 
 export const Hero: React.FC = () => {
   const { ref, isInView } = useScrollAnimation();
@@ -22,6 +23,7 @@ export const Hero: React.FC = () => {
   return (
     <section
       id="home"
+      style={{ width: '100%', height: '600px', position: 'relative' }}
       className="min-h-[100vh] sm:min-h-[90vh] lg:min-h-[95vh] flex items-center justify-center px-3 sm:px-6 lg:px-10 relative overflow-hidden"
     >
       <div className="absolute inset-0 z-0">
@@ -31,11 +33,21 @@ export const Hero: React.FC = () => {
           transition={{ duration: 2 }}
           className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-500/20 via-black to-black"
         />
+        <Particles 
+          particleColors={['#bfbfbf', '#bfbfbf', '#fffffd']}
+          particleCount={100}
+          particleSpread={10}
+          speed={0.4}
+          particleBaseSize={100}
+          moveParticlesOnHover={true}
+          alphaParticles={true}
+          disableRotation={false}
+        />
       </div>
 
       <div
         ref={ref}
-        className=" max-w-2xl sm:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto relative z-10 flex flex-col items-center justify-center text-center w-full"
+        className=" max-w-2xl sm:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto relative z-10 flex flex-col items-center justify-center text-center w-full pointer-events-none"
       >
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -64,7 +76,7 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="flex flex-col sm:flex-row gap-2 sm:gap-3 mt-8 sm:mt-10 lg:mt-12 w-full max-w-[280px] sm:max-w-md"
+          className="flex flex-col sm:flex-row gap-2 sm:gap-3 mt-8 sm:mt-10 lg:mt-12 w-full max-w-[280px] sm:max-w-md pointer-events-auto"
         >
           <motion.a
             href="#projects"
@@ -95,7 +107,7 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 2.6 }}
-          className="flex justify-center mt-4 sm:mt-6"
+          className="flex justify-center mt-4 sm:mt-6 pointer-events-auto"
         >
           <SocialLinks />
         </motion.div>
@@ -105,7 +117,7 @@ export const Hero: React.FC = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-2 sm:bottom-6 lg:bottom-2 xl:bottom-2 left-1/2 transform -translate-x-1/2 z-10"
+        className="pointer-events-none absolute bottom-2 sm:bottom-6 lg:bottom-2 xl:bottom-2 left-1/2 transform -translate-x-1/2 z-10 pointer-events-auto"
       >
         <motion.div
           animate={{ y: [0, 6, 0] }}
