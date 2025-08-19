@@ -5,8 +5,7 @@ import { AnimatedText } from "../ui/AnimatedText";
 import { ResumeButton } from "../ui/ResumeButton";
 import { SocialLinks } from "../ui/SocialLinks";
 import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
-import Particles from "../ui/Particles";
-
+import Squares from '../ui/Squares';
 export const Hero: React.FC = () => {
   const { ref, isInView } = useScrollAnimation();
 
@@ -33,15 +32,14 @@ export const Hero: React.FC = () => {
           transition={{ duration: 2 }}
           className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-500/20 via-black to-black"
         />
-        <Particles 
-          particleColors={['#bfbfbf', '#bfbfbf', '#fffffd']}
-          particleCount={100}
-          particleSpread={10}
-          speed={0.4}
-          particleBaseSize={100}
-          moveParticlesOnHover={true}
-          alphaParticles={true}
-          disableRotation={false}
+        
+  
+        <Squares 
+        speed={0.0} 
+        squareSize={70}
+        direction='down' // up, down, left, right, diagonal
+        borderColor='#0d1f42'
+        hoverFillColor='#72672a'
         />
       </div>
 

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ProjectModal } from "../ui/ProjectModal";
 import { Github, ExternalLink } from "lucide-react";
+import ScrollStack, { ScrollStackItem } from '../ui/ScrollStack'
 
 interface Project {
   title: string;
@@ -139,7 +140,7 @@ export const Projects: React.FC = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.6 }}
-          className="mb-12 sm:mb-16 lg:mb-20 text-center"
+          className="mb-2 sm:mb-16 lg:mb-2 text-center"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-5 inline-block text-gradient">
             Projects
@@ -147,78 +148,84 @@ export const Projects: React.FC = () => {
           <div className="w-16 sm:w-20 lg:w-24 h-1 bg-white/20 mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
-          {projectsData.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="bg-zinc-900 backdrop-blur-sm rounded-xl p-6 sm:p-8 hover:bg-zinc-800 transition-colors cursor-pointer"
-              onClick={() => handleProjectClick(project)}
-            >
-              <div className="relative w-full h-48 mb-6 rounded-lg overflow-hidden">
-                <img
-                  src={project.image || "/projects/default-project.png"}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-              </div>
-
-              <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3 sm:mb-4">
-                {project.title}
-              </h3>
-
-              <div className="mb-6 sm:mb-8">
-                <p className="text-white/70 text-base sm:text-lg leading-relaxed">
-                  {project.description}
-                </p>
-              </div>
-
-              <div className="flex gap-3 mb-8">
-                <motion.a
-                  href={project.links.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors text-sm"
-                  onClick={(e) => e.stopPropagation()}
+        <div className="relative h-[80vh]">
+          <ScrollStack
+            className="rounded-3xl h-[60vh] scrollbar-none"
+            itemDistance={120}
+            itemScale={0.04}
+            itemStackDistance={40}
+            stackPosition="25%"
+            scaleEndPosition="12%"
+            baseScale={0.85}
+          >
+            {projectsData.map((project, index) => (
+              <ScrollStackItem
+                key={index}
+                itemClassName="h-[30vh] bg-zinc-900/80 backdrop-blur-md border border-white/5  transition-colors cursor-pointer"
+              >
+                <div
+                  className="w-full h-full flex flex-col md:flex-row gap-4 md:gap-8"
+                  onClick={() => handleProjectClick(project)}
                 >
-                  <Github size={18} />
-                  <span>Github</span>
-                </motion.a>
-                {project.links.live !== 'none' && (
-                  <motion.a
-                    href={project.links.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white text-black hover:bg-white/90 transition-colors text-sm font-medium"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <ExternalLink size={18} />
-                    <span>Live</span>
-                  </motion.a>
-                )}
-              </div>
-
-              <div className="flex flex-wrap gap-2 sm:gap-3 mb-4 sm:mb-6">
-                {project.technologies.map((tech, idx) => (
-                  <span
-                    key={idx}
-                    className="px-3 py-1.5 text-sm sm:text-base rounded-full bg-white/10 text-white/70 border border-white/5"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              
-            </motion.div>
-          ))}
+                  <div className="flex-1 flex flex-col md:pr-4">
+                    <h3 className="text-xl sm:text-2xl font-semibold text-white mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-white/70 text-sm sm:text-base leading-relaxed line-clamp-4 mb-4">
+                      {project.description}
+                    </p>
+                    <div className="mt-auto">
+                      <div className="flex gap-3 mb-4">
+                        <motion.a
+                          href={project.links.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 transition-colors text-xs sm:text-sm"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <Github size={16} />
+                          <span>Github</span>
+                        </motion.a>
+                        {project.links.live !== 'none' && (
+                          <motion.a
+                            href={project.links.live}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white text-black hover:bg-white/90 transition-colors text-xs sm:text-sm font-medium"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <ExternalLink size={16} />
+                            <span>Live</span>
+                          </motion.a>
+                        )}
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.slice(0, 6).map((tech, idx) => (
+                          <span
+                            key={idx}
+                            className="px-2.5 py-1 text-xs sm:text-sm rounded-full bg-white/10 text-white/70 border border-white/5"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="relative w-full md:w-[45%] h-48 md:h-full rounded-xl overflow-hidden">
+                    <img
+                      src={project.image || "/projects/default-project.png"}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </ScrollStackItem>
+            ))}
+          </ScrollStack>
         </div>
       </div>
 

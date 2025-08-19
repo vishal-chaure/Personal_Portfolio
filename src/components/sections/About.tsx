@@ -1,9 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import TiltedCard from "@/components/ui/TiltedCard";
 
 export const About: React.FC = () => {
-  const { ref, isInView } = useScrollAnimation();
+  const { ref, isInView } = useScrollAnimation({ once: false });
 
   return (
     <section
@@ -30,15 +31,62 @@ export const About: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex justify-center lg:justify-start px-4 sm:px-6 lg:px-8"
           >
-            <div className="w-56 h-56 sm:w-48 sm:h-48 lg:w-96 lg:h-96 rounded-2xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-white/10 flex items-center justify-center overflow-hidden">
-            <div className="w-56 h-56 sm:w-44 sm:h-44 lg:w-96 lg:h-96 rounded-xl bg-white/5 flex items-center justify-center overflow-hidden">
-              <img
-                src="/mypic.jpg"
-                alt="Vishal Chaure"
-                className="w-full h-full object-cover"
+            {/* Mobile version */}
+            <div className="block sm:hidden">
+              <TiltedCard
+                imageSrc="/mypic.jpg"
+                altText="Vishal Chaure"
+                captionText=""
+                containerHeight="350px"
+                containerWidth="250px"
+                imageHeight="300px"
+                imageWidth="250px"
+                rotateAmplitude={8}
+                scaleOnHover={1.05}
+                showMobileWarning={false}
+                showTooltip={false}
+                displayOverlayContent={false}
+                overlayContent={null}
               />
             </div>
-          </div>
+            
+            {/* Tablet version */}
+            <div className="hidden sm:block lg:hidden">
+              <TiltedCard
+                imageSrc="/mypic.jpg"
+                altText="Vishal Chaure"
+                captionText=""
+                containerHeight="350px"
+                containerWidth="250px"
+                imageHeight="300px"
+                imageWidth="250px"
+                rotateAmplitude={8}
+                scaleOnHover={1.05}
+                showMobileWarning={false}
+                showTooltip={false}
+                displayOverlayContent={false}
+                overlayContent={null}
+              />
+            </div>
+            
+            {/* Desktop version */}
+            <div className="hidden lg:block">
+              <TiltedCard
+                imageSrc="/mypic-bg.jpg"
+                altText="Vishal Chaure"
+                captionText="vishal"
+                containerHeight="450px"
+                containerWidth="370px"
+                imageHeight="458px"
+                imageWidth="370px"
+                rotateAmplitude={8}
+                scaleOnHover={1.05}
+                showMobileWarning={false}
+                showTooltip={false}
+                displayOverlayContent={true}
+                overlayContent="/mypic-no-bg.png"
+              />
+            </div>
           </motion.div>
 
           <motion.div

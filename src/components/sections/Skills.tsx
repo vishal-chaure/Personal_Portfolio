@@ -25,7 +25,7 @@ const coreCompetencies = [
 ];
 
 export const Skills: React.FC = () => {
-  const { ref, isInView } = useScrollAnimation();
+  const { ref, isInView } = useScrollAnimation({ once: false });
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },

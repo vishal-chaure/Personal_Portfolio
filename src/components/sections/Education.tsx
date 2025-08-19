@@ -24,7 +24,7 @@ const educationData = [
 ];
 
 export const Education: React.FC = () => {
-  const { ref, isInView } = useScrollAnimation();
+  const { ref, isInView } = useScrollAnimation({ once: false });
 
   return (
     <section

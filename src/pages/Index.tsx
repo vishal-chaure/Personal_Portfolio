@@ -10,6 +10,7 @@ import { Contact } from "@/components/sections/Contact";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { ScrollToTop } from "@/components/ui/ScrollToTop";
 import { useEffect } from "react";
+import ScrollStack, { ScrollStackItem } from '../components/ui/ScrollStack'
 
 const Index = () => {
   useEffect(() => {

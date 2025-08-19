@@ -6,7 +6,7 @@ import { SocialLinks } from "../ui/SocialLinks";
 import { Mail, Download } from "lucide-react";
 
 export const Contact: React.FC = () => {
-  const { ref, isInView } = useScrollAnimation();
+  const { ref, isInView } = useScrollAnimation({ once: false });
 
   return (
     <section
